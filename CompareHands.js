@@ -97,7 +97,13 @@ module.exports = class CompareHands {
   }
 
   static isHighestCard(hand) { // TODO!
-    return 0;
+    this.sortByRank(hand);
+    let ranks = '';
+    for (let card of hand.cards) {
+      ranks += card.rank
+    }
+   
+    return this.rankToPoint(ranks[4]);
   }
 
   // helper functions below:
