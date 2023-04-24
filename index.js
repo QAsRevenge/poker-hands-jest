@@ -4,7 +4,7 @@ const CompareHands = require('./CompareHands');
 
 // ♥♦♣♠
 
-let hand1 = new Hand('♥2', '♠3', '♥5', '♠7', '♥K');
-let hand2 = new Hand('♠2', '♣3', '♠5', '♦7', '♣9');
+let hand1 = new Hand('♠T', '♥7', '♥8', '♥T', '♥K');
+let hand2 = new Hand('♣6', '♠4', '♣4', '♦T', '♣7');
 console.log(CompareHands.comparer(hand1, hand2));
 
