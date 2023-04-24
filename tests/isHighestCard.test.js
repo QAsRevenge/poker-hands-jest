@@ -3,8 +3,8 @@ const CompareHands = require('../CompareHands');
 const suits = '♥♦♣♠';
 
 test('Test that highestCard returns highest score if hand has highest card', () => {
-  let hand1 = new Hand('♥7', '♦2', '♣4', '♠3', '♠K');
-  let hand2 = new Hand('♦7', '♦2', '♣4', '♠3', '♠Q');
+  let hand1 = new Hand('♥7', '♦2', '♣4', '♠3', '♠A');
+  let hand2 = new Hand('♦7', '♦2', '♣4', '♠3', '♠K');
   let hand1Score = CompareHands.isHighestCard(hand1);
   let hand2Score = CompareHands.isHighestCard(hand2);
   expect(hand1Score).toBeGreaterThan(hand2Score);
