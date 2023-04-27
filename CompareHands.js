@@ -4,6 +4,64 @@ module.exports = class CompareHands {
 
   // Helper methods (used by the comparer methods)
 
+// I can't get this to work with Jest, it works when called in index.js but not when testing. I dont know whats wrong
+/*   static containsDuplicates(hand1, hand2) {
+    let uniques = [[], []];
+    [hand1.cards, hand2.cards].forEach((cards, index) => {
+      cards.forEach((card) => {
+        if (!uniques[index].some((unique) => unique.suit === card.suit && unique.rank === card.rank)) {
+          uniques[index].push(card);
+        }
+      });
+    });
+
+    let duplicates = false;
+    [hand1, hand2].forEach((hand, index) => {
+      if (hand.cards.length !== uniques[index].length) {
+        console.log(`There are duplicates in hand${index+1}.`);
+        duplicates = true;
+      }
+    });
+
+    let notUniqueCards = false;
+    uniques[0].forEach((card) => {
+      if (uniques[1].some((unique) => unique.suit === card.suit && unique.rank === card.rank)) {
+        console.log('There is at least one card that appears in both hands.');
+        notUniqueCards = true;
+      }
+    });
+
+    if (!duplicates && !notUniqueCards) {
+      console.log('There are no duplicates in either hand and no cards that appear in both hands.');
+      return true;
+    }
+    return false;
+} */
+
+  
+  // This works with Jest though.. strange
+ // -- Check for duplicate cards --
+  static containsDuplicates(hand) {
+    // Empty array to hold all unique instances of a card
+    let uniques = [];
+    // Loop through the cards in the hand
+    hand.cards.forEach((card) => {
+      // Use some() to find cards that are not in the array 'uniques' by checking 
+      // their suit and rank. If the card is not in the array, we push it to the array
+      if (!uniques.some((unique) => unique.suit === card.suit && unique.rank === card.rank)) {
+        uniques.push(card)
+      }
+    });
+    // Compare the length of the original cards array and uniques
+    // If they are not the same length then there must be duplicates in 'cards'
+    if (hand.cards.length !== uniques.length) {
+      // Return true if there are duplicates
+      return true;
+    } 
+    // Return false if there are no duplicates
+    return false;
+  }
+
   // note: ace is high
   static rankToPoint(rank) {
     return this.ranks.indexOf(rank) + 2;
