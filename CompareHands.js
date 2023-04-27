@@ -137,5 +137,6 @@ module.exports = class CompareHands {
   static isHighestCard(hand) {
     return this.scoreWithKickers(0, hand.cards);
   }
+  
 
 }
